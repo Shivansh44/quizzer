@@ -1,0 +1,38 @@
+<% layout("/layouts/boilerplate") %>
+
+<h1 class="text-center">Edit the course</h1>
+
+<form class="mb-3 col-6 offset-3 needs-validation" action="/course/<%= course._id %>?_method=PUT" method="POST" novalidate>
+    <div class="form-group">
+      <label for="name">Name</label>
+      <input type="text" class="form-control" id="name" placeholder="Enter course name" name="name" value="<%= course.name %>" required>
+      <div class="valid-feedback">
+        Looks good!
+      </div>
+      <div class="invalid-feedback">
+        Please provide a valid name
+      </div>
+    </div>
+    <div class="form-group">
+        <label for="code">Course Code</label>
+        <input type="text" class="form-control" id="code" placeholder="Enter course code" name="code" value="<%= course.code %>" required>
+        <div class="valid-feedback">
+            Looks good!
+        </div>
+        <div class="invalid-feedback">
+            Please provide a valid username
+        </div>
+    </div>
+    <div class="form-group">
+        <label for="passingScore">Passing Score</label>
+        <input type="number" class="form-control" id="passingScore" placeholder="Enter passing score" name="passingScore" value="<%= course.passingScore %>" required>
+        <div class="valid-feedback">
+            Looks good!
+        </div>
+        <div class="invalid-feedback">
+            Please provide a numerical value.
+          </div>
+    </div>
+
+    <button type="submit" class="btn btn-primary btn-block">Submit</button>
+  </form>

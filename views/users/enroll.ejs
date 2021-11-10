@@ -1,0 +1,24 @@
+<% layout("layouts/boilerplate") %>
+
+<h1 class="text-center mb-3">Register for a new Course</h1>
+
+<% if (courses && courses.length !== 0){ %>
+    <ul class="list-group">
+        <form action="/enroll" class="mb-3" method="POST">
+            <% for (let course of courses){ %>
+                <li name="" class="px-5 list-group-item list-group-item-dark list-group-item-action">
+                    <input class="form-check-input" type="checkbox" name="courseSelected[]" value="<%= course._id %>" id="<%= course._id %> ">
+                    <label class="form-check-label" for="<%= course._id %> ">
+                        <span class="font-weight-bold"><%= course.name %></span> - 
+                        <span class="font-weight-normal"><%= course.code %></span> 
+                        <span class="font-weight-bold"> -    </span> 
+                        <span class="font-weight-bold text-primary text-right"><%= course.author.name %></span>
+                    </label>
+                </li>
+            <% } %> 
+            <button type="submit" class="btn btn-success my-3">Enroll</button>
+        </form>
+    </ul>
+<% } else { %>
+    <h2 class="text-danger text-center">There are no courses to register</h2>
+<% } %> 

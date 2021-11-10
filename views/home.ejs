@@ -1,0 +1,24 @@
+<% layout('layouts/boilerplate')%>
+
+<h1 class="text-center mb-3">Welcome to Quizzer</h1>
+
+<h3 class="text-center mb-5">You can sign up as either a teacher and set quizzes and courses or as a student to attempt them.
+    We provide security to your data through encryption and secure cloud storage.
+</h3>
+
+<h5 class="text-right mb-3">Keep Learning....</h5>
+
+<% if (user && (user.occupation === "student" || user.occupation === "teacher")){ %>
+    <form action="/profile" method="GET" class="col-6 offset-3 mb-3">
+        <button type="submit" class="btn btn-primary btn-block">Goto Profile</button>
+    </form>
+<% } else { %>
+    <form action="/login" method="GET" class="col-6 offset-3 mb-3">
+        <button type="submit" class="btn btn-primary btn-block">Login</button>
+    </form>
+    
+    <form action="/register" method="GET" class="col-6 offset-3 mb-3">
+        <button type="submit" class="btn btn-success btn-block">Register</button>
+    </form>
+<% } %> 
+

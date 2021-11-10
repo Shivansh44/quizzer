@@ -1,0 +1,48 @@
+<% layout("layouts/boilerplate") %> 
+
+<h1 class="text-center">Name: <%= user.name %></h1>
+
+<div class="mb-3">
+    <h4>Age: <%= user.age %></h4>
+    <h4>Role: <%= user.occupation %></h4>
+</div>
+
+<% if (user.occupation === "teacher"){ %>
+    <% if (user.coursesOffered && user.coursesOffered.length !== 0){ %> 
+    <h2 class="text-center">Courses Offered</h2>
+    <div class="list-group mb-3">
+        <% for (let course of user.coursesOffered){ %> 
+            <a href="/course/<%= course._id %>" class="list-group-item list-group-item-action list-group-item-dark font-weight-bold"><%= course.name %> - <span class="text-muted font-weight-normal"><%= course.code %></span></a>
+        <% } %> 
+    </div>
+    <% } else { %>
+        <h2 class="text-center">No Courses are currently being offered by this Faculty</h2>
+    <% } %> 
+    <form action="/course" method="GET">
+        <button type="submit" class="btn btn-success">Add new Course</button>
+    </form>
+<% } %>
+
+<% if (user.occupation === "student"){ %>
+    <% if (user.coursesTaken && user.coursesTaken.length !== 0){ %>
+        <h2 class="text-center">Courses Taken</h2>
+        <div class="list-group mb-3">
+            <% for (let course of user.coursesTaken){ %> 
+                <a href="/course/<%= course.course._id %>" class="list-group-item list-group-item-action list-group-item-dark font-weight-bold"><%= course.course.name %> - 
+                    <span class="text-primary font-weight-bold">
+                        <% if (course.scoredMarks >= 0){ %>
+                            <%= course.scoredMarks %>
+                        <% } else { %>  
+                            No marks assigned
+                        <% } %> 
+                    </span>
+                </a>
+            <% } %> 
+        </div>
+    <% } else { %>
+        <h2 class="text-center">The Student hasn't enrolled in any courses</h2>
+    <% } %> 
+    <form action="/enroll" method="GET">
+        <button type="submit" class="btn btn-success">Enroll in a new Course</button>
+    </form>
+<% } %> 

@@ -1,0 +1,55 @@
+<% layout('layouts/boilerplate')%>
+
+<h1 class="text-center mb-3">Register</h1>
+
+<form class="mb-3 col-6 offset-3 needs-validation" action="/register" method="POST" novalidate>
+    <div class="form-group">
+      <label for="name">Name</label>
+      <input type="text" class="form-control" id="name" placeholder="Enter your name" name="name" required>
+      <div class="valid-feedback">
+        Looks good!
+      </div>
+      <div class="invalid-feedback">
+        Please provide a valid name
+      </div>
+    </div>
+    <div class="form-group">
+        <label for="username">Username</label>
+        <input type="text" class="form-control" id="username" placeholder="Enter your username" name="username" required>
+        <div class="valid-feedback">
+            Looks good!
+        </div>
+        <div class="invalid-feedback">
+            Please provide a valid username
+        </div>
+    </div>
+    <div class="form-group">
+      <label for="password">Password</label>
+      <input type="password" class="form-control" id="password" placeholder="Enter your password" name="password" required>
+      <div class="valid-feedback">
+        Looks good!
+      </div>
+      <div class="invalid-feedback">
+        Please provide a password
+      </div>
+    </div>
+    <div class="form-group">
+        <label for="age">Age</label>
+        <input type="number" class="form-control" id="age" placeholder="Enter your Age" name="age" required>
+        <div class="valid-feedback">
+            Looks good!
+        </div>
+        <div class="invalid-feedback">
+            Please provide a numerical value.
+          </div>
+    </div>
+
+    <div class="form-group">
+        <label for="occupation">Occupation</label>
+        <select class="form-control" id="occupation" name="occupation" required>
+            <option value="teacher">Teacher</option>
+            <option value="student">Student</option>
+        </select>
+    </div>
+    <button type="submit" class="btn btn-primary btn-block">Submit</button>
+  </form>
